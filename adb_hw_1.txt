@@ -1,0 +1,17 @@
+Установить adb, SDK Platform tools
+Запустить через Powershell в папке platform tools (в папке - файл - открыть ps)
+Подключить тлф проводом к пк
+ 1. Отобразить подключённый девайс в консоли:
+./adb devices
+ 2. Вывести адрес приложения todolist в системе Android:
+./adb shell 'pm list packages -f | grep todolist'
+ 3. Установить .apk файл приложениия todolist на телефон с компьютера через ADB:
+./adb install *путь к APK на ПК* (можно кинуть мышкой файл, пример: ./adb install d:\todolist\app-debug.apk)
+ 4. Сделать скриншот запущенного приложения todolist и сразу скопировать на компьютер в одной команде:
+./adb shell screencap /storage/emulated/0/dcim/screen_new.png | ./adb pull /storage/emulated/0/dcim/screen_new.png d:\todolist\new.png (скрин и сейв | пулл скрина на пк в директорию)
+ 5. Вывести в консоль логи приложения todolist:
+./adb logcat -d | findstr -r todolist
+ 6. Скопировать логи приложения todolist на компьютер
+./adb logcat -d | findstr -r todolist > loooogs.txt
+ 7. Удалить приложение todolist с телефона через ADB
+./adb uninstall com.android.todolist
